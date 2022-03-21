@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle.dark,
+            systemOverlayStyle: SystemUiOverlayStyle.light,
             backgroundColor: Colors.white,
             title: const Text(
               'facebook',
@@ -22,6 +22,23 @@ class HomeScreen extends StatelessWidget {
                 color: Palette.facebookBlue,
               ),
             ),
+            centerTitle: false,
+            floating: true,
+            actions: [
+              Container(
+                margin: const EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                  iconSize: 30.0,
+                  color: Colors.black,
+                ),
+              ),
+            ],
           )
         ],
       ),
