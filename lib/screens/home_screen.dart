@@ -1,6 +1,8 @@
 import 'package:facebook_clone_ui/config/palette.dart';
+import 'package:facebook_clone_ui/widgets/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,19 +27,16 @@ class HomeScreen extends StatelessWidget {
             centerTitle: false,
             floating: true,
             actions: [
-              Container(
-                margin: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  shape: BoxShape.circle,
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                  iconSize: 30.0,
-                  color: Colors.black,
-                ),
+              CircleButton(
+                icon: Icons.search,
+                iconSize: 30.0,
+                onPressed: () => print('Search'),
               ),
+              CircleButton(
+                icon: MdiIcons.facebookMessenger,
+                iconSize: 30.0,
+                onPressed: () => print('Messenger'),
+              )
             ],
           )
         ],
