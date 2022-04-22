@@ -1,8 +1,9 @@
 import 'package:facebook_clone_ui/config/palette.dart';
-import 'package:facebook_clone_ui/widgets/circle_button.dart';
+import 'package:facebook_clone_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:facebook_clone_ui/data/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -38,7 +39,9 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () => print('Messenger'),
               )
             ],
-          )
+          ),
+          SliverToBoxAdapter(
+              child: CreatePostContainer(currentUser: currentUser))
         ],
       ),
     );
