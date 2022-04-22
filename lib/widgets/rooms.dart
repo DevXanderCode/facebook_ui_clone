@@ -1,4 +1,5 @@
 import 'package:facebook_clone_ui/config/palette.dart';
+import 'package:facebook_clone_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone_ui/models/models.dart';
 
@@ -23,16 +24,22 @@ class Rooms extends StatelessWidget {
           itemCount: 1 + onlineUsers.length,
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              return const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: _CreateRoomButton(),
               );
             }
-            return Container(
-              margin: const EdgeInsets.all(2.0),
-              height: 20.0,
-              width: 20.0,
-              color: Colors.red,
+
+            final User user = onlineUsers[index - 1];
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
+              child: ProfileAvatar(
+                imageUrl: user.imageUrl,
+                isActive: true,
+              ),
             );
           }),
     );

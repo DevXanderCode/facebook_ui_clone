@@ -1,6 +1,8 @@
+import 'package:facebook_clone_ui/config/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-class ProfileAvatar extends StatefulWidget {
+class ProfileAvatar extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
 
@@ -11,12 +13,33 @@ class ProfileAvatar extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ProfileAvatar> createState() => _ProfileAvatarState();
-}
-
-class _ProfileAvatarState extends State<ProfileAvatar> {
-  @override
   Widget build(BuildContext context) {
-    return Container();
+    return Stack(
+      children: [
+        CircleAvatar(
+          radius: 20.0,
+          backgroundColor: Colors.grey[200],
+          backgroundImage: CachedNetworkImageProvider(imageUrl),
+        ),
+        isActive
+            ? Positioned(
+                bottom: 0.0,
+                right: 0.0,
+                child: Container(
+                  height: 15.0,
+                  width: 15.0,
+                  decoration: BoxDecoration(
+                    color: Palette.online,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      width: 2.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox.shrink()
+      ],
+    );
   }
 }
