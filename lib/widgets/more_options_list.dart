@@ -60,6 +60,27 @@ class _Option extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return InkWell(
+      onTap: () => print(label),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: color,
+            size: 38.0,
+          ),
+          const SizedBox(
+            width: 6.0,
+          ),
+          Flexible(
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 16.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
