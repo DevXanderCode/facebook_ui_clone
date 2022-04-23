@@ -132,7 +132,7 @@ class _PostStats extends StatelessWidget {
               ),
               child: const Icon(
                 Icons.thumb_up,
-                color: Colors?.white,
+                color: Colors.white,
                 size: 10.0,
               ),
             ),
