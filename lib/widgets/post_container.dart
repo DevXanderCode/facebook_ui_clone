@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_clone_ui/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone_ui/models/models.dart';
@@ -15,19 +16,30 @@ class PostContainer extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 5.0),
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _PostHeader(post: post),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(post.caption),
-            )
-          ],
-        ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _PostHeader(post: post),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                Text(post.caption),
+                post.imageUrl != ''
+                    ? const SizedBox.shrink()
+                    : const SizedBox(
+                        height: 6.0,
+                      )
+              ],
+            ),
+          ),
+          post.imageUrl != ''
+              ? CachedNetworkImage(imageUrl: post.imageUrl)
+              : const SizedBox.shrink()
+        ],
       ),
     );
   }
