@@ -189,7 +189,7 @@ class _PostStats extends StatelessWidget {
               icon: Icon(
                 MdiIcons.shareOutline,
                 color: Colors.grey.shade600,
-                size: 20.0,
+                size: 25.0,
               ),
               label: "Share",
               onTap: () => print('Share'),
@@ -224,6 +224,7 @@ class _PostButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             height: 25.0,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 icon,
                 const SizedBox(
