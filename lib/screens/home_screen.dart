@@ -132,48 +132,55 @@ class _HomeScreenDesktop extends StatelessWidget {
         ),
         const Spacer(),
         SizedBox(
-            width: 600.0,
-            child: CustomScrollView(
-              controller: scrollController,
-              slivers: [
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 5.0),
-                  sliver: SliverToBoxAdapter(
-                    child: Stories(
-                      currentUser: currentUser,
-                      stories: stories,
-                    ),
+          width: 600.0,
+          child: CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 5.0),
+                sliver: SliverToBoxAdapter(
+                  child: Stories(
+                    currentUser: currentUser,
+                    stories: stories,
                   ),
                 ),
-                const SliverPadding(
-                  padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
-                  sliver: SliverToBoxAdapter(
-                    child: CreatePostContainer(currentUser: currentUser),
-                  ),
+              ),
+              const SliverPadding(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
+                sliver: SliverToBoxAdapter(
+                  child: CreatePostContainer(currentUser: currentUser),
                 ),
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
-                  sliver: SliverToBoxAdapter(
-                    child: Rooms(onlineUsers: onlineUsers),
-                  ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+                sliver: SliverToBoxAdapter(
+                  child: Rooms(onlineUsers: onlineUsers),
                 ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, index) {
-                      final Post post = posts[index];
-                      return PostContainer(
-                        post: post,
-                      );
-                    },
-                    childCount: posts.length,
-                  ),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, index) {
+                    final Post post = posts[index];
+                    return PostContainer(
+                      post: post,
+                    );
+                  },
+                  childCount: posts.length,
                 ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
         const Spacer(),
         Flexible(
           flex: 2,
-          child: Container(color: Colors.blue),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ContactList(users: onlineUsers),
+            ),
+          ),
         )
       ],
     );

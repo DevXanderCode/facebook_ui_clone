@@ -11,23 +11,23 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {},
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ProfileAvatar(imageUrl: user.imageUrl),
-            const SizedBox(
-              width: 6.0,
-            ),
-            Text(
+    return InkWell(
+      onTap: () {},
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ProfileAvatar(imageUrl: user.imageUrl),
+          const SizedBox(
+            width: 6.0,
+          ),
+          Flexible(
+            child: Text(
               user.name,
               style: const TextStyle(fontSize: 16.0),
-            )
-          ],
-        ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
       ),
     );
   }
