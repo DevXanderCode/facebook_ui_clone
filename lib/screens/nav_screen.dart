@@ -17,7 +17,6 @@ class _NavScreenState extends State<NavScreen> {
     Scaffold(),
     Scaffold(),
     Scaffold(),
-    Scaffold(),
   ];
 
   final List<IconData> _icons = const [
@@ -35,7 +34,10 @@ class _NavScreenState extends State<NavScreen> {
     return DefaultTabController(
       length: _icons.length,
       child: Scaffold(
-        body: _screens[_selectedIndex],
+        body: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          children: _screens,
+        ),
         bottomNavigationBar: CustomTabBar(
           icons: _icons,
           selectedIndex: _selectedIndex,
