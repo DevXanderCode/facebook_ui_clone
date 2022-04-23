@@ -168,13 +168,32 @@ class _PostStats extends StatelessWidget {
         Row(
           children: [
             _PostButton(
-                icon: Icon(
-                  MdiIcons.thumbUpOutline,
-                  color: Colors.grey.shade600,
-                  size: 20.0,
-                ),
-                label: "Like",
-                onTap: () => print('Like')),
+              icon: Icon(
+                MdiIcons.thumbUpOutline,
+                color: Colors.grey.shade600,
+                size: 20.0,
+              ),
+              label: "Like",
+              onTap: () => print('Like'),
+            ),
+            _PostButton(
+              icon: Icon(
+                MdiIcons.commentOutline,
+                color: Colors.grey.shade600,
+                size: 20.0,
+              ),
+              label: "Comment",
+              onTap: () => print('Comment'),
+            ),
+            _PostButton(
+              icon: Icon(
+                MdiIcons.shareOutline,
+                color: Colors.grey.shade600,
+                size: 20.0,
+              ),
+              label: "Share",
+              onTap: () => print('Share'),
+            ),
           ],
         ),
       ],
@@ -196,21 +215,23 @@ class _PostButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () => onTap(),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          height: 25.0,
-          child: Row(
-            children: [
-              icon,
-              const SizedBox(
-                width: 4.0,
-              ),
-              Text(label)
-            ],
+    return Expanded(
+      child: Material(
+        color: Colors.white,
+        child: InkWell(
+          onTap: () => onTap(),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            height: 25.0,
+            child: Row(
+              children: [
+                icon,
+                const SizedBox(
+                  width: 4.0,
+                ),
+                Text(label)
+              ],
+            ),
           ),
         ),
       ),
