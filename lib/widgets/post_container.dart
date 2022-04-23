@@ -45,18 +45,42 @@ class _PostHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            ProfileAvatar(imageUrl: post.user.imageUrl),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(post.user.name),
-            )
-          ],
+        ProfileAvatar(imageUrl: post.user.imageUrl),
+        const SizedBox(
+          width: 8.0,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                post.user.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '${post.timeAgo} - ',
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Icon(
+                    Icons.public,
+                    color: Colors.grey.shade500,
+                    size: 12.0,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
         IconButton(
-          onPressed: () => print('more'),
-          icon: const Icon(Icons.more_horiz_rounded),
+          onPressed: () => print('More'),
+          icon: const Icon(Icons.more_horiz),
           iconSize: 25.0,
         ),
       ],
