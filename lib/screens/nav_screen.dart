@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:facebook_clone_ui/screens/home_screen.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../widgets/widgets.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({Key? key}) : super(key: key);
