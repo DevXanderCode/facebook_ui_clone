@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebook_clone_ui/config/palette.dart';
 import 'package:facebook_clone_ui/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone_ui/models/models.dart';
@@ -37,8 +38,17 @@ class PostContainer extends StatelessWidget {
             ),
           ),
           post.imageUrl != ''
-              ? CachedNetworkImage(imageUrl: post.imageUrl)
-              : const SizedBox.shrink()
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: CachedNetworkImage(imageUrl: post.imageUrl),
+                )
+              : const SizedBox.shrink(),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+            ),
+            child: _PostStats(post: post),
+          ),
         ],
       ),
     );
@@ -95,6 +105,38 @@ class _PostHeader extends StatelessWidget {
           icon: const Icon(Icons.more_horiz),
           iconSize: 25.0,
         ),
+      ],
+    );
+  }
+}
+
+class _PostStats extends StatelessWidget {
+  final Post post;
+  const _PostStats({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(4.0),
+              decoration: const BoxDecoration(
+                color: Palette.facebookBlue,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.thumb_up,
+                color: Colors?.white,
+                size: 10.0,
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
