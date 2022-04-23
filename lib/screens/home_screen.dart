@@ -63,7 +63,9 @@ class HomeScreen extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, index) {
                 final Post post = posts[index];
-                return Container();
+                return PostContainer(
+                  post: post,
+                );
               },
               childCount: posts.length,
             ),
