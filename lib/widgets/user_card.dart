@@ -11,17 +11,24 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ProfileAvatar(imageUrl: user.imageUrl),
-        const SizedBox(
-          width: 6.0,
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {},
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ProfileAvatar(imageUrl: user.imageUrl),
+            const SizedBox(
+              width: 6.0,
+            ),
+            Text(
+              user.name,
+              style: const TextStyle(fontSize: 16.0),
+            )
+          ],
         ),
-        Text(
-          user.name,
-          style: const TextStyle(fontSize: 16.0),
-        )
-      ],
+      ),
     );
   }
 }

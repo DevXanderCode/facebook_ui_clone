@@ -46,11 +46,12 @@ class CustomAppBar extends StatelessWidget {
           ),
           SizedBox(
             width: 600.0,
+            height: double.infinity,
             child: CustomTabBar(
-              icons: icons,
-              selectedIndex: selectedIndex,
-              onTap: onTap,
-            ),
+                icons: icons,
+                selectedIndex: selectedIndex,
+                onTap: onTap,
+                isBottomIndicator: true),
           ),
           Expanded(
             child: Row(
