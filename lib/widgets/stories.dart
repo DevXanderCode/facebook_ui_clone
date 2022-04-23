@@ -1,3 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebook_clone_ui/config/palette.dart';
+import 'package:facebook_clone_ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone_ui/models/models.dart';
 
@@ -46,8 +49,8 @@ class Stories extends StatelessWidget {
 
 class _StoryCard extends StatelessWidget {
   final bool isAddStory;
-  final User currentUser;
-  final Story story;
+  final User? currentUser;
+  final Story? story;
 
   const _StoryCard(
       {Key? key, this.isAddStory = false, this.currentUser, this.story})
@@ -55,6 +58,49 @@ class _StoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: CachedNetworkImage(
+            imageUrl: isAddStory ? currentUser!.imageUrl : story!.imageUrl,
+            height: double.infinity,
+            width: 110.0,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Container(
+          height: double.infinity,
+          width: 110.0,
+          decoration: BoxDecoration(
+            gradient: Palette.storyGradient,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+        ),
+        Positioned(
+          top: 8.0,
+          left: 8.0,
+          child: isAddStory
+              ? Container(
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () => print('Add Story'),
+                    icon: const Icon(Icons.add),
+                    iconSize: 30.0,
+                  ),
+                )
+              : ProfileAvatar(
+                  imageUrl: story!.imageUrl,
+                  hasBorder: !story!.isViewed,
+                ),
+        )
+      ],
+    );
   }
 }
